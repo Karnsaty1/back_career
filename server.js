@@ -34,7 +34,7 @@ app.use(
 );
 
 const corsOptions = {
-  origin: [process.env.FRONTEND_URL,'http://localhost:3000','https://front-career-git-main-satyam-karns-projects.vercel.app','https://front-career-imu1xenaz-satyam-karns-projects.vercel.app'],
+  origin: [process.env.FRONTEND_URL,'https://front-career-git-main-satyam-karns-projects.vercel.app','https://front-career-git-main-satyam-karns-projects.vercel.app','https://front-career-3bdql6d8g-satyam-karns-projects.vercel.app'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
