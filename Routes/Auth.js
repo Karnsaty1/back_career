@@ -18,9 +18,8 @@ Router.post('/signUp', async (req, res) => {
     if (!validator.isEmail(email)) return res.status(400).json({ error: 'Invalid Email' });
 
     const user = await userCollections.findOne({ email });
-    if (user) return res.status(400).send('Email Already Exists !!! Try Logging In');
-    const user2=await userCollections.findOne({userName});
-    if(user2) return res.status(400).send('UserName Already Exists !!! Please try a new username');
+    if (user) return res.status(400).json({msg:'Email Already Exists !!! Try Logging In'});
+   
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -102,7 +101,7 @@ Router.post('/logIn', async (req, res) => {
     if (!validator.isEmail(email)) return res.status(400).json({ error: 'Invalid Email' });
 
     const user = await userCollections.findOne({ email });
-    if (!user) return res.status(400).send('User not Found !!! ');
+    if (!user) return res.status(400).send('User not Found !!! Try Signing Up');
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) return res.status(401).send('Password is Incorrect !!! ');
